@@ -61,16 +61,11 @@ def bot_loop():
  
 threading.Thread(target=bot_loop).start() 
  
-@app.route("/") 
-def home(): 
-    return "Bot is running 24/7" 
- 
-@app.route("/logs") 
-def logs(): 
-    if not os.path.exists(LOG_FILE): 
-        return "No logs yet" 
-    with open(LOG_FILE, "r", encoding="utf-8") as f: 
-        return f"^<pre^>{f.read(^)}^</pre^>" 
- 
-if __name__ == "__main__": 
-    app.run(host="0.0.0.0", port=10000) 
+@app.route("/logs")
+def logs():
+
+    if not os.path.exists(LOG_FILE):
+        return "No logs yet"
+
+    with open(LOG_FILE, "r", encoding="utf-8") as f:
+        return f"<pre>{f.read()}</pre>"
